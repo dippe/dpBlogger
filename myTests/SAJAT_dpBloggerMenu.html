@@ -46,12 +46,6 @@ $(document).ready(function() {
 
 	var dpSelectedMenu;
 
-	// generate ID-s to the menu items
-	$("#dpBloggerMenu li a").attr("id", function (arr) {
-	  return "div-id" + arr;
-	})
-
-
 	/*
 	* Add click event with drop-down animation to the root menu element.
 	*/
@@ -79,21 +73,15 @@ $(document).ready(function() {
 
 <!-- You can change menu items here -->
 <ul id="dpBloggerMenu">	
-	<li><a href="/">Főoldal</a>
-	<li><a href="/p/Bemutatkozas">Bemutatkozás</a>
-	<li><a href="/p/Projektek" onclick="return false;">Projektek</a>
-		<ul class="dpBMenuLevel1">
-			<li><a href="http://dippe.blogspot.hu/search/label/Cloudy%20Game">Cloudy Game</a></li>
-			<li><a href="http://dippe.blogspot.hu/search/label/BubbleHeader">BubbleHeader</a></li>
+	<li><a id="m1" href="#link">Főoldal</a>
+	<li><a id="m2" href="#link">Bemutatkozás</a>
+	<li><a id="m4" href="#link" onclick="return false;">Projektek</a>
+		<ul class="dpBMenu1">
+			<li><a id="m5" href="#link">Cloudy Game</a></li>
+			<li><a id="m6" href="#link">BubbleHeader</a></li>
 		</ul>
 	</li>
-	<li><a href="/p/Hasznos" onclick="return false;">Hasznos</a>
-		<ul class="dpBMenuLevel1">
-			<li><a href="http://dippe.blogspot.hu/search/label/Gnome%20Shell">Gnome Shell</a></li>
-			<li><a href="http://dippe.blogspot.hu/search/label/WindowMaker">WindowMaker</a></li>
-			<li><a href="http://dippe.blogspot.hu/search/label/SublimeText2">SublimeText2</a></li>
-		</ul>
-	</li>
+	<li><a id="m7" href="#link">Hasznos</a>
 </ul>
 
 
@@ -151,19 +139,19 @@ $(document).ready(function() {
 
 
 	/* LEVEL 1 MENU ITEMS */
-	#dpBloggerMenu .dpBMenuLevel1{
+	#dpBloggerMenu .dpBMenu1{
 		list-style: none;
 	 	display:none;
 	}
 
 
-	#dpBloggerMenu .dpBMenuLevel1 li{
+	#dpBloggerMenu .dpBMenu1 li{
 		/*background-color:#8685E7;*/
 	 	text-indent:25px;
 	}
 
 
-	#dpBloggerMenu .dpBMenuLevel1 li a{
+	#dpBloggerMenu .dpBMenu1 li a{
 		/*color:#a0563a;*/
 		display:block;
 		padding-top:8px;
@@ -171,7 +159,7 @@ $(document).ready(function() {
 		border-bottom:1px solid #fdc97b;
 	}
 
-	#dpBloggerMenu .dpBMenuLevel1 li a:hover{
+	#dpBloggerMenu .dpBMenu1 li a:hover{
 	 	/*background-color:#ddcb6f;*/
 	 	color:#ffffff;
 	 	cursor:pointer;
