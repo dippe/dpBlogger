@@ -1,0 +1,207 @@
+/*
+*	Simple animated, vertical menu for the Google Blogger
+*
+*	Copyright (C) 2012 Peter Dajka (dippede@gmail.com)
+*
+*	This program is free software: you can redistribute it and/or modify
+*	it under the terms of the GNU Lesser General Public License as published by
+*	the Free Software Foundation, either version 3 of the License, or
+*	(at your option) any later version.
+*
+*	This program is distributed in the hope that it will be useful,
+*	but WITHOUT ANY WARRANTY; without even the implied warranty of
+*	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*	GNU General Public License for more details.
+*
+*	You should have received a copy of the GNU Lesser General Public License
+*	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*
+*	Visit http://dippe.github.com or http://www.wsys.hu for more information.
+*
+*	Features:
+*		- simple
+*		- compatible with the most browsers (also without CSS3)
+*		- maximum two level (upper and inner menu)
+*		- 
+*
+*	1. Modify the menu names and/or design in this file
+*	2. Add the jquery and jquery ui libs to the Blogger HTML Template code, into the header part:
+	...
+	<head>
+		<script src='//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'/>
+		<script src='//ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js'/>
+	...
+*	If you don't want edit the template, you can add it to the beginning of this code. (not fully tested)
+*
+*	3. Add an HTML or Javascript gadget to the side bar.
+*	4. Copy this file into it.
+*
+*/
+
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+	var dpSelectedMenu;
+
+	/*
+	* Add click event with drop-down animation to the root menu element.
+	*/
+	$("#dpBloggerMenu li a").click( 
+			function(){
+				if ( $(this).attr('id')==dpSelectedMenu ){
+					$(this).parent().find('ul').slideUp('medium');
+					dpSelectedMenu	= 0;
+				}else{ 
+					$('#dpBloggerMenu li ul').slideUp('medium');
+					dpSelectedMenu	= $(this).attr('id');
+					$(this).parent().find('ul').slideDown('medium');
+				}
+			}
+	);
+
+	// you can add default selected menu
+//	$('.dpDefSelMenu').parent().parent().slideDown('medium');
+//	$('.dpDefSelMenu').css('color','white');
+//	dpSelectedMenu	= $('.dpDefSelMenu').parent().parent().parent().find('a').attr('id');
+  
+});
+</script>
+
+
+<!-- You can change menu items here -->
+<ul id="dpBloggerMenu">	
+	<li><a id="m1" href="index.php?menu=1&lang=hu">Főoldal</a>
+	<li><a id="m2" href="index.php?menu=1&lang=hu">Bemutatkozás</a>
+	<li><a id="m4" href="" onclick="return false;">Projektek</a>
+		<ul class="dbmenu_low">
+			<li><a id="m5" href="hotel_szobaarak.php?menu=13&lang=hu">Cloudy Game</a></li>
+			<li><a id="m6" href="hotel_akciok.php?menu=61&lang=hu"></a>BubbleHeader</li>
+		</ul>
+	</li>
+	<li><a id="m7" href="index.php?menu=1&lang=hu">Hasznos</a>
+</ul>
+
+
+<!-- You can change colors, design items here -->
+<style media="screen" type="text/css">
+
+	.menu{
+		padding:0px;
+		margin:0px;
+	}
+
+	#content .menu{
+		width:198px;
+		background-color:#fdb74f;
+		vertical-align:top;
+		padding:0px;
+		margin:0px;
+	}
+
+
+	#content .dpBloggerMenu{
+		font-family: Arial [monotype],tahoma, verdana;
+		font-size: 11px;
+		font-weight: 700;	
+	/* 	visibility:hidden; */
+	  	text-indent:0px;
+	/*  	display:block; */
+		list-style: none;
+		margin: 0px;
+		padding: 0px;
+	}
+
+
+	#content .dpBloggerMenu li{
+	/*  	text-indent:0px; */
+	/*  	background-color:yellow; */
+	/*  	display:block; */
+		color:white;
+	 	text-indent:20px;
+	 	border-bottom:1px solid white;
+	 	width:198px,
+	 	height:30px;
+	 	min-height:18px;
+	/*  	padding-top:7px; */
+		list-style: none;
+	}
+
+	#content .dpBloggerMenu li:hover{
+	/*  	background-color:#d6a33f; */
+	/*  	color:white; */
+	}
+
+	#content .dpBloggerMenu li a:hover{
+		background-color:#d6a33f;
+		color:white;
+		cursor:pointer;
+	}
+
+	#content .dpBloggerMenu li a{
+	 	color:#a0563a;
+		border-bottom:1px solid #fdc97b;
+		margin:0px;
+		padding:0px;
+		padding-top:8px;
+		padding-bottom:7px;
+		display:block;
+		background-image:url("../img/list.png");
+		background-repeat: no-repeat;
+		background-position: 9px;
+		text-align:left;
+	}
+
+
+	#content .dbmenu_low{
+		margin: 0px;
+		padding: 0px; 	
+		list-style: none;
+	/* 	visibility:hidden; */
+	 	display:none;
+	}
+
+
+	#content .dbmenu_low li{
+		margin: 0px;
+		padding: 0px; 	
+	/*  	text-indent:0px; */
+	/*  	background-color:red; */
+	/*  	display:none; */
+		background-color:#f0db78;
+	 	text-indent:25px;
+	/*  	border-top:1px solid white; */
+	}
+
+	#content .dbmenu_low li:hover{
+	/* 	background-color:#ddcb6f;
+	 	color:#000;*/
+	}
+
+
+	#content .dbmenu_low li a{
+		margin: 0px;
+		padding: 0px; 	
+	/*  	text-indent:0px; */
+	/*  	background-color:red; */
+	/*  	display:none; */
+	/*  	background-color:green; */
+		color:#a0563a;
+		display:block;
+	/* 	width:198px; */
+		padding-top:8px;
+		padding-bottom:8px;
+		border-bottom:1px solid #fdc97b;
+		background-image:url("../img/list.png");
+		background-repeat: no-repeat;
+		background-position: 14px;
+		
+	}
+
+	#content .dbmenu_low li a:hover{
+	 	background-color:#ddcb6f;
+	 	color:#000;
+	}
+
+</style>
